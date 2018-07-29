@@ -16,7 +16,8 @@
 .jumbotron {
   background-image: asset-url('space.png');
   background-size: cover;
-  height: 400px;
+  height: 6
+  600px;
 }
 
 .jumbotron h1 {
@@ -34,4 +35,45 @@
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+.btn-xlrg {
+	font-size: 1.7em;
+	color: dark gray;
+}
+
+footer {
+	margin-top: 45px;
+	padding-top: 5px;
+	border-top: 1px solid black;
+	color: #222;
+}
+
+footer small {
+	float: left;
+}
+
+footer a:hover {
+  color: green;
+}
+
+footer ul {
+	float: right;
+	list-style: none;
+}
+footer ul li {
+	float: left;
+	margin-left: 15px;
+}
+
+footer a {
+	color: #222;
+}
+
+a {
+	color: #222;
+}
+
+a:hover {
+  color: green;
 }
