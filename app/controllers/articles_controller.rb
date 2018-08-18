@@ -41,7 +41,7 @@ end
   def destroy
     @article = set_article
     @article.destroy
-    flash[:danger] = "Article was DESTROYED"
+    flash[:danger] = "Article was chosen by Thanos"
     redirect_to articles_path
   end
 

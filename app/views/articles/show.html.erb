@@ -1,10 +1,15 @@
-<h2>Title: <%= @article.title %></h2>
-
-
-<p>
-  Description: <%= @article.description %>
-</p>
-<div class="footNav col-sm-6 offset-sm-4">
-  <%= link_to "Back to Article Index", articles_path %> |
-  <%= link_to "Edit this Article", edit_article_path(@article) %>
+<h2 align="center">Title: <%= @article.title %></h2>
+<div class="card bg-light col-sm-8 offset-sm-2">
+	<h4 class="center description"><strong>Description:</strong></h4>
+	<div class="description-body">
+    <%=simple_format(@article.description) %>
+  </div>
+  <div class="article-actions">
+    <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+    <%= link_to "View all articles", articles_path, class: "btn btn-xs btn-success" %>
+    <%= link_to "Destroy this article", article_path(@article),
+      method: :delete,
+      data: { confirm: "Has this article been chosen?"}, 
+      class: "btn btn-xs btn-danger" %>
+  </div>
 </div>

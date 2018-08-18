@@ -1,22 +1,22 @@
-<h1>Articles Index</h1>
-
-  <p>
-  	<%= link_to "Create new Article", new_article_path%>
-  </p>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
+<h1 align="center">Articles Index</h1>
   <% @articles.each do |article| %>
-    <tr>
-    	<td><%= article.title %></td>
-    	<td><%= article.description %></td>
-    	<td><%= link_to "Edit", edit_article_path(article) %></td>
-    	<td><%= link_to "Show", article_path(article) %></td>
-      <td><%= link_to "dddddestroy", article_path(article), method: :delete, data: {confirm: "Are you the destroyer?"} %></td>
-    </tr>
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+        <div class="card card-lg bg-light">
+          <div class="article-title">  
+            <%= link_to article.title, article_path(article) %>
+          </div>
+          <div class="article-body">
+    	      <%= truncate(article.description, length: 100) %>
+          </div>
+          <div class="article-actions">
+            <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Destroy this article", article_path(article),
+              method: :delete,
+              data: { confirm: "Has this article been chosen?"}, 
+              class: "btn btn-xs btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</table>
-
-<%= link_to "Back to Article Index", articles_path %>
