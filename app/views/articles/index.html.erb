@@ -10,11 +10,11 @@
     	      <%= truncate(article.description, length: 100) %>
           </div>
           <div class="article-actions">
-            <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-sm btn-primary" %>
             <%= link_to "Destroy this article", article_path(article),
               method: :delete,
               data: { confirm: "Has this article been chosen?"}, 
-              class: "btn btn-xs btn-danger" %>
+              class: "btn btn-sm btn-danger" %>
           </div>
         </div>
       </div>
