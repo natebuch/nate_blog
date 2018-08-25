@@ -1,3 +1,3 @@
 Lesson 96:
 Debugging
-(didnt add to this version)
+(didnt add to this version, exit using ctrl-d)
