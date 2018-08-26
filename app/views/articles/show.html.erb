@@ -1,15 +1,26 @@
-<h2 align="center">Title: <%= @article.title %></h2>
+<h2 align="center"><strong>Title: <%= @article.title %></strong></h2>
 <div class="card bg-light col-sm-8 offset-sm-2">
+  <div class="article-list center">
+    <li>Created by:</li> 
+    <li><%= link_to gravatar_for(@article.user), user_path(@article.user) %></li>
+    <li><%= link_to @article.user.username, user_path(@article.user) %></li>       
+    <small>
+      <li><%= pluralize(@article.user.articles.count, "article") if @article.user.articles %></li>
+      </small>
+    </div>
 	<h4 class="center description"><strong>Description:</strong></h4>
 	<div class="description-body">
     <%=simple_format(@article.description) %>
   </div>
   <div class="article-actions right">
-    <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
     <%= link_to "View all articles", articles_path, class: "btn btn-sm btn-success" %>
-    <%= link_to "Destroy this article", article_path(@article),
-      method: :delete,
-      data: { confirm: "Has this article been chosen?"}, 
-      class: "btn btn-sm btn-danger" %>
+      <% if logged_in? && current_user == @article.user %>
+        <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
+        <%= link_to "Destroy this article", article_path(@article),
+          method: :delete,
+          data: { confirm: "Has this article been chosen?"}, 
+          class: "btn btn-sm btn-danger" %>
+      <% end %>
   </div>
+
 </div>

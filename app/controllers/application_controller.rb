@@ -1,17 +1,24 @@
 class ApplicationController < ActionController::Base
-  def new
-  	@article = Article.new
+
+  protect_from_forgery with: :exception
+
+  helper_method :current_user, :logged_in?
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def create
-   @article = Article.new(article_params)
-   @article.save
-   redirect_to articles_show(@article)
+  def logged_in?
+    !!current_user
   end
 
-  private
-	  def article_params
-	    params.require(:article).permit(:title, :description)
-	  end
+  def require_user
+    if !logged_in?
+      flash[:danger] = "You must be logged in to perform that action."
+      redirect_to root_path
+    end
+  end
+
+
 
 end

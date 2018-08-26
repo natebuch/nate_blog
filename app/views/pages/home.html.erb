@@ -1,6 +1,8 @@
 <div class="center jumbotron">
   <h1>NateBlog</h1>
-  <%= link_to "Sign Up Now", signup_path, class: "btn btn-dark btn-lg" %>
+  <% if !logged_in? %>
+    <%= link_to "Sign Up Now", signup_path, class: "btn btn-dark btn-lg" %>
+   <% end %>
   <p>
     <%= link_to "THE BLOG", articles_path %> | <%= link_to "ABOUT", about_path %>
   </p>

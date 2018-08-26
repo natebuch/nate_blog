@@ -1,24 +1,32 @@
-<h1 align="center">Articles Index</h1>
+<h1 align="center">NateBlog Users</h1>
+
+<div align="center">
+  <%= will_paginate %> 
   <% @users.each do |user| %>
-    <div class="row">
-      <div class="col-sm-8 offset-sm-2">
-        <div class="card card-lg bg-light">
-          <div class="article-title">  
-            <%= link_to user.username, user_path(user) %>
-          </div>
-            <div class="article-meta-details">
-            <small>
-              <%= time_ago_in_words(user.created_at) %> ago,
-              last updated: <%= time_ago_in_words(user.updated_at) %></small>
-            </div>
-          <div class="article-actions">
-            <%= link_to "Edit User", edit_user_path(user), class: "btn btn-sm btn-primary" %>
-            <%= link_to "Destroy this User", user_path(user),
-              method: :delete,
-              data: { confirm: "Has this user been chosen?"}, 
-              class: "btn btn-sm btn-danger" %>
-          </div>
+  <div class="row">
+    <div class="col-sm-8 offset-sm-2">
+      <div class="card card-lg bg-light">
+        <div class="article-list">  
+          <li><%= link_to gravatar_for(user), user_path(user) %></li>
+          <li><%= link_to user.username, user_path(user) %></li>       
+          <small>
+            <li><%= pluralize(user.articles.count, "article") if user.articles %></li>
+            <li>User created:<%= time_ago_in_words(user.created_at) %> ago</li>
+            <li>User last updated: <%= time_ago_in_words(user.updated_at) %></li>
+          </small>
+        </div>
+        <div class="article-actions">
+          <% if logged_in? && current_user == @user %>
+          <%= link_to "Edit User", edit_user_path(user), class: "btn btn-sm btn-primary" %>
+          <%= link_to "Destroy this User", user_path(user),
+            method: :delete,
+            data: { confirm: "Has this user been chosen?"}, 
+            class: "btn btn-sm btn-danger" %>
+          <% end %>
         </div>
       </div>
     </div>
-  <% end %>
+  </div>  
+<% end %>
+  <%= will_paginate %>
+</div>
