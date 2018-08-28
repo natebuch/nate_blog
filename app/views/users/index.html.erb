@@ -14,9 +14,7 @@
             <li>User created:<%= time_ago_in_words(user.created_at) %> ago</li>
             <li>User last updated: <%= time_ago_in_words(user.updated_at) %></li>
           </small>
-        </div>
-        <div class="article-actions">
-          <% if logged_in? && current_user == @user %>
+          <% if logged_in? and current_user.admin? %>
           <%= link_to "Edit User", edit_user_path(user), class: "btn btn-sm btn-primary" %>
           <%= link_to "Destroy this User", user_path(user),
             method: :delete,

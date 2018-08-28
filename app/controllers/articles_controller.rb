@@ -44,7 +44,7 @@ end
   def destroy
     @article = set_article
     @article.destroy
-    flash[:danger] = "Article was chosen by Thanos"
+    flash[:danger] = "Article was deleted"
     redirect_to articles_path
   end
 
@@ -60,7 +60,7 @@ end
     end
 
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user and !current_user.admin?
         flash[:danger] = "You may only manage your own articles"
         redirect_to root_path
       end

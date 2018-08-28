@@ -12,9 +12,8 @@
 	<div class="description-body">
     <%=simple_format(@article.description) %>
   </div>
-  <div class="article-actions right">
-    <%= link_to "View all articles", articles_path, class: "btn btn-sm btn-success" %>
-      <% if logged_in? && current_user == @article.user %>
+  <div class="article-actions">
+      <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
         <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
         <%= link_to "Destroy this article", article_path(@article),
           method: :delete,
