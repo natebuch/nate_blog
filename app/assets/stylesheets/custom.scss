@@ -51,6 +51,11 @@ h1 {
   margin-bottom: 15px;
 }
 
+.card-category{
+  margin-bottom: 5px;
+  padding: 15px;
+}
+
 .article-meta-details {
   border-top: 1px solid #eaeaea;
   margin-top: 15px;
@@ -81,6 +86,7 @@ h1 {
   font-weight: bold;
   font-size: 1.5em;
   color: #343a40;
+  list-style: none;
 }
 
 .article-title a {
@@ -138,4 +144,10 @@ a:hover {
 
 .BackToArticle {
   text-align: right;
+}
+
+.pagination {
+  text-align: center;
+  display:flex;
+  justify-content:center;
 }
