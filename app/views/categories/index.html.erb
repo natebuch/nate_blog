@@ -1,20 +1,17 @@
 <h1 align="center">Listing All Categories</h1>
 
 
-<div align="center">
-	<div align="center">
-		<%= will_paginate %>
-			<% @categories.each do |category| %>
-				<ul class="listing">
-					<div class="row">
-						<div class="card-category card-lg bg-light col-sm-6 offset-sm-3">
-							<li class="article-title">
-								<%= link_to "#{category.name}",  category_path(category) %>
-							</li>
-						</div>
-					</div>
-				</ul>
-			<% end %>
-	  <%= will_paginate %>
-	</div>
-</div>
+<%= will_paginate %>
+	<% @categories.each do |category| %>
+		<ul class="listing">
+			<div class="row justify-content-center">
+				<div class="card-category card-lg bg-light col-sm-6">
+					<li class="article-title">
+						<%= link_to "#{category.name}",  category_path(category) %>
+					</li>
+				</div>
+			</div>
+		</ul>
+	<% end %>
+<%= will_paginate %>
+
