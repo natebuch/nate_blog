@@ -17,6 +17,29 @@
       <li class="nav-item">
         <%= link_to "Users", users_path, class: "nav-link" %>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-item" style="list-style: none;">
+            <li><%= link_to "All Categories", categories_path(current_user) %></li>
+          </ul>
+            <div class="dropdown-divider"></div>  
+            <ul style="list-style: none; padding: 0px;">
+            <% Category.all.each do |category| %>
+              <li class="dropdown-item" style="padding-top: 0px; padding-bottom: 0px;"><%= link_to "#{category.name}", category_path(category) %></li> 
+            <% end %>
+          </ul>
+          <% if logged_in? and current_user.admin? %>
+            <div class="dropdown-divider"></div>
+            <ul class="dropdown-item" style="list-style: none;">
+              <li><%= link_to "Create New Category", new_category_path %></li>
+            </ul>
+          <% end %> 
+        </div>
+      </li>
+      
  <!--      <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->
@@ -35,6 +58,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"><%= link_to "View your profile", user_path(current_user) %></a>
           </div>
+        </li>
       </li>
       <% else %>
         <li class="nav-item">
