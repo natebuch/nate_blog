@@ -91,6 +91,7 @@ h1 {
 
 .article-title a {
   color: teal;
+  list-style: none;
 }
 
 .article-body {
@@ -152,4 +153,19 @@ a:hover {
 
 .listing {
   padding-left: 0px;
+}
+
+.checkbox-inline {
+  padding-right: 15px;
+}
+
+.badge {
+  background-color: lightblue;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+.input_checkbox input {
+  width: auto !important;
 }

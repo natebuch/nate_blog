@@ -11,6 +11,11 @@
 	<h4 class="center description"><strong>Description:</strong></h4>
 	<div class="description-body">
     <%=simple_format(@article.description) %>
+    <div>
+      <% if @article.categories.any? %>
+      <p>Categories: <%= render @article.categories %></p>
+      <% end %>
+    </div>
   </div>
   <div class="article-actions">
       <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
